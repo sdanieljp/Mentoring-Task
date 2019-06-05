@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  
-  has_secure_password
-  
   validates :name,
     presence: true,
     length: { maximum: 15 }
@@ -11,5 +8,9 @@ class User < ApplicationRecord
   validates :password,
     presence: true,
     format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}+\z/i }
+    
+  has_secure_password
+  
+  has_many :topics
     
 end
