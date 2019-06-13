@@ -8,7 +8,6 @@ class Food
     puts "カロリーを入力してください"
     hash[:calory] = gets.chomp.to_i
     @array << hash
-    puts @array
   end
   
   def Food.show_all_calory
