@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   
   resources :users
   resources :topics
+  get 'comments/new?topic_id=:topic_id' => 'comments#create'
+  resources :comments
   
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
+  post  '/favorites/destroy', to: 'favorites#destroy'
+  
 end

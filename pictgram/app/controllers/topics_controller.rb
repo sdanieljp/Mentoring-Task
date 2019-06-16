@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all.includes(:favorite_users)
+    @topics = Topic.all.includes(:favorite_users)  #@topicsは配列データになっている
   end
   
   def new
@@ -9,7 +9,6 @@ class TopicsController < ApplicationController
   
   def create
     @topic = current_user.topics.new(topic_params)
-    
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
@@ -20,6 +19,7 @@ class TopicsController < ApplicationController
   
   private
   def topic_params
-    params.require(:topic).permit(:image, :description)
+    params.require(:topic).permit(:image, :description, :topic_id)
   end
+
 end
